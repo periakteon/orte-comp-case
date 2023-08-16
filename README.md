@@ -17,6 +17,8 @@ After installing Docker, run the following command from the terminal:
 docker run -p 3306:3306 --name my_mysql_db -e MYSQL_ROOT_PASSWORD=admin -d mysql:latest
 ```
 
+**Warning**: If you already have MySQL running on port 3306, this command will throw an error. If you get an error, try a different port.
+
 2. Navigate to the "server" directory and run the following command to install the required Node modules:
 
 ```bash

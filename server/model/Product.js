@@ -19,7 +19,7 @@ export const Product = sequelize.define("Product", {
     allowNull: false,
   },
   size: {
-    type: Sequelize.JSON,
+    type: Sequelize.STRING,
     allowNull: false,
   },
   description: {

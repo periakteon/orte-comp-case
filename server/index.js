@@ -1,3 +1,4 @@
+import Sequelize from "sequelize";
 import express from "express";
 import cors from "cors";
 import { createServer } from "http";
@@ -27,13 +28,17 @@ io.on("connection", async (socket) => {
   });
 
   socket.on("filterProducts", async (sizeFilter) => {
-    const allProducts = await Product.findAll();
+    const products = await Product.findAll({
+      where: {
+        size: {
+          [Sequelize.Op.like]: `%${sizeFilter}%`,
+        },
+      },
+    });
 
-    const filterSize = sizeFilter.split(",");
-
-    const filteredProducts = allProducts.filter((product) => {
-      const productSizes = product.size;
-      return filterSize.some((size) => productSizes.includes(size));
+    const filteredProducts = products.filter((product) => {
+      const sizes = product.size.split(", ");
+      return sizes.includes(sizeFilter);
     });
 
     socket.emit("filteredProducts", filteredProducts);

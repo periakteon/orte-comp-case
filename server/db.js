@@ -1,4 +1,3 @@
-import Sequelize from "sequelize";
 import fs from "fs/promises";
 import path from "path";
 import mysql from "mysql2/promise";
@@ -34,7 +33,9 @@ import { Product, sequelize } from "./model/Product.js";
             price: productData.price,
             stock: productData.stock,
             img: productData.img,
-            size: productData.size,
+            size: Array.isArray(productData.size)
+              ? productData.size.join(", ")
+              : productData.size,
             description: productData.description,
           });
         } else {

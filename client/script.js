@@ -4,15 +4,12 @@ socket.on("connect", () => {
 	console.log("Connected to the server");
 });
 
-socket.on("disconnect", () => {
-	console.log("Disconnected from the server");
-});
-
-socket.on("message", (data) => {
-	console.log("Received message:", data);
-});
-
-document.getElementById("sendButton").addEventListener("click", () => {
-	const message = document.getElementById("messageInput").value;
-	socket.emit("message", message);
+socket.on("allProducts", (products) => {
+	const productList = document.getElementById("productList");
+	productList.innerHTML = "";
+	products.map((product) => {
+		const listItem = document.createElement("li");
+		listItem.textContent = `${product.description} - ${product.price}`;
+		productList.appendChild(listItem);
+	});
 });

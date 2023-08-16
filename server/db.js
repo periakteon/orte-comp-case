@@ -43,6 +43,7 @@ import { Product, sequelize } from "./model/Product.js";
 			}
 		}
 		console.log("Veriler başarıyla veritabanına kaydedildi.");
+		process.exit();
 	} catch (error) {
 		console.error("Hata oluştu:", error);
 	}

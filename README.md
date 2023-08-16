@@ -1,5 +1,9 @@
 # Orte Company Case - M. Masum Gökyüz
 
+## Video
+
+[![Watch the video](https://img.youtube.com/vi/kprAfs7111w/hqdefault.jpg)](https://www.youtube.com/watch?v=kprAfs7111w)
+
 ## Before You Start:
 
 ### Why didn't I choose TypeScript?

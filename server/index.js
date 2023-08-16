@@ -19,9 +19,12 @@ const io = new Server(httpServer, {
 });
 
 io.on("connection", async (socket) => {
-	console.log("a user connected", socket.id);
-	const products = await Product.findAll();
-	socket.emit("allProducts", products);
+	console.log("user connected", socket.id);
+
+	socket.on("fetchProducts", async () => {
+		const products = await Product.findAll();
+		socket.emit("allProducts", products);
+	});
 });
 
 httpServer.listen(PORT, () => {

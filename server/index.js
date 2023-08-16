@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { createServer } from "http";
 import { Server } from "socket.io";
-import {Product} from "./model/Product.js"
+import { Product } from "./model/Product.js";
 
 const app = express();
 app.use(cors());
@@ -19,9 +19,9 @@ const io = new Server(httpServer, {
 });
 
 io.on("connection", async (socket) => {
-    console.log("a user connected", socket.id);
-    const products = await Product.findAll();
-    socket.emit("allProducts", products);
+	console.log("a user connected", socket.id);
+	const products = await Product.findAll();
+	socket.emit("allProducts", products);
 });
 
 httpServer.listen(PORT, () => {

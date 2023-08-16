@@ -9,7 +9,23 @@ socket.on("allProducts", (products) => {
 	productList.innerHTML = "";
 	products.map((product) => {
 		const listItem = document.createElement("li");
-		listItem.textContent = `${product.description} - ${product.price}`;
+		listItem.classList.add("product-item");
+
+		listItem.innerHTML = `
+        <div class="product-image">
+            <img src="${product.img}" alt="Product Image">
+        </div>
+        <div class="product-details">
+            <div class="product-info">
+                <span class="product-id">ID: ${product.id}</span>
+                <span class="product-price">Price: ${product.price}</span>
+                <span class="product-stock">Stock: ${product.stock}</span>
+                <span class="product-size">Size: ${product.size}</span>
+            </div>
+            <p class="product-description">${product.description}</p>
+        </div>
+    `;
+
 		productList.appendChild(listItem);
 	});
 });

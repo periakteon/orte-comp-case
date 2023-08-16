@@ -1,11 +1,25 @@
 # Orte Company Case - M. Masum Gökyüz
 
+## Before You Start:
+
+### Why didn't I choose TypeScript?
+
+I use TypeScript in my own projects in order to detect errors that may arise in Production and to provide type-safety, but in this project I preferred JavaScript. Of course, TypeScript is actually a superset of JavaScript and therefore not independent of JavaScript, but it provides us with type-safety. But why didn't I choose TypeScript for this project? Actually, I started as a TypeScript project but then I gave up because this case was not complex enough to require type-safety. I also had to consider the possibility that the people who will run this application might not have TypeScript installed on their computers, so I went straight to JavaScript.
+
+### Why did I choose vanilla JavaScript and DOM API instead of React?
+
+The case you asked me for was not so complex that I needed to go into the front-end, because what it really wanted to measure was my mastery of the back-end. Also, using React would have meant running a separate "npm install" command. I love using React and the Next.js framework in my own projects and I write in React almost every day, but it would have been a bit "overkill" to choose React or any other JavaScript library for this case. For this reason, I prepared a client side with vanilla JavaScript via DOM API. Also, the fact that it was in the form of "index.html" meant that it could be easily used by dragging and dropping to the browser.
+
+---
+
 ## Requirements
 
 - npm
 - Node.js
 - Docker
 - MySQL
+
+---
 
 ## Installation
 

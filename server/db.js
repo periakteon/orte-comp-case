@@ -6,45 +6,45 @@ import { fileURLToPath } from "url";
 import { Product, sequelize } from "./model/Product.js";
 
 (async () => {
-	try {
-		const connection = await mysql.createConnection({
-			host: "localhost",
-			user: "root",
-			password: "admin",
-		});
+  try {
+    const connection = await mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "admin",
+    });
 
-		await connection.query("CREATE DATABASE IF NOT EXISTS orte");
-		console.log("Veritabanı başarıyla oluşturuldu veya zaten mevcut.");
+    await connection.query("CREATE DATABASE IF NOT EXISTS orte");
+    console.log("Veritabanı başarıyla oluşturuldu veya zaten mevcut.");
 
-		const __filename = fileURLToPath(import.meta.url);
-		const __dirname = path.dirname(__filename);
-		const filePath = path.join(__dirname, "urunler.json");
-		const jsonFile = await fs.readFile(filePath, "utf8");
-		const jsonData = JSON.parse(jsonFile);
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    const filePath = path.join(__dirname, "urunler.json");
+    const jsonFile = await fs.readFile(filePath, "utf8");
+    const jsonData = JSON.parse(jsonFile);
 
-		await sequelize.sync({ force: true });
+    await sequelize.sync({ force: true });
 
-		for (const product of jsonData.products) {
-			for (const productName in product) {
-				const productData = product[productName];
+    for (const product of jsonData.products) {
+      for (const productName in product) {
+        const productData = product[productName];
 
-				if (productData) {
-					await Product.create({
-						id: productData.id,
-						price: productData.price,
-						stock: productData.stock,
-						img: productData.img,
-						size: productData.size,
-						description: productData.description,
-					});
-				} else {
-					console.log(`Ürün: ${productName} geçersiz.`);
-				}
-			}
-		}
-		console.log("Veriler başarıyla veritabanına kaydedildi.");
-		process.exit();
-	} catch (error) {
-		console.error("Hata oluştu:", error);
-	}
+        if (productData) {
+          await Product.create({
+            id: productData.id,
+            price: productData.price,
+            stock: productData.stock,
+            img: productData.img,
+            size: productData.size,
+            description: productData.description,
+          });
+        } else {
+          console.log(`Ürün: ${productName} geçersiz.`);
+        }
+      }
+    }
+    console.log("Veriler başarıyla veritabanına kaydedildi.");
+    process.exit();
+  } catch (error) {
+    console.error("Hata oluştu:", error);
+  }
 })();

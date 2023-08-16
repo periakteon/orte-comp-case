@@ -3,6 +3,7 @@ import fs from "fs/promises";
 import path from "path";
 import mysql from "mysql2/promise";
 import { fileURLToPath } from "url";
+import { Product, sequelize } from "./model/Product.js";
 
 (async () => {
 	try {
@@ -14,34 +15,6 @@ import { fileURLToPath } from "url";
 
 		await connection.query("CREATE DATABASE IF NOT EXISTS orte");
 		console.log("Veritabanı başarıyla oluşturuldu veya zaten mevcut.");
-
-		const sequelize = new Sequelize("orte", "root", "admin", {
-			host: "localhost",
-			dialect: "mysql",
-		});
-
-		const Product = sequelize.define("Product", {
-			price: {
-				type: Sequelize.STRING,
-				allowNull: false,
-			},
-			stock: {
-				type: Sequelize.STRING,
-				allowNull: false,
-			},
-			img: {
-				type: Sequelize.STRING,
-				allowNull: false,
-			},
-			size: {
-				type: Sequelize.JSON,
-				allowNull: false,
-			},
-			description: {
-				type: Sequelize.TEXT,
-				allowNull: false,
-			},
-		});
 
 		const __filename = fileURLToPath(import.meta.url);
 		const __dirname = path.dirname(__filename);

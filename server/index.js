@@ -18,7 +18,17 @@ const io = new Server(httpServer, {
 });
 
 io.on("connection", (socket) => {
-	console.log("a user connected", socket.id);
+    console.log("a user connected", socket.id);
+
+    socket.on("message", (data) => {
+        console.log("Received message:", data);
+        
+        io.emit("message", data);
+    });
+
+    socket.on("disconnect", () => {
+        console.log("a user disconnected", socket.id);
+    });
 });
 
 httpServer.listen(PORT, () => {

@@ -1,58 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<style>
-			h1 {
-				width: 500px;
-				margin: 0 auto;
-				text-align: center;
-			}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      h1 {
+        width: 100%;
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
 
-			.product-item {
-				display: flex;
-				padding: 10px;
-				border: 1px solid #ccc;
-				margin-bottom: 10px;
-				align-items: center;
-			}
+      .product-item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 10px;
+        padding: 15px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        align-items: center;
+        transition: background-color 0.2s ease;
+      }
 
-			.product-image img {
-				max-width: 100px;
-				max-height: 100px;
-				margin-right: 10px;
-			}
+      .product-item:hover {
+        background-color: #f7fafc;
+      }
 
-			.product-details {
-				flex: 1;
-			}
+      .product-image img {
+        max-width: 100px;
+        max-height: 100px;
+        object-fit: contain;
+      }
 
-			.product-info {
-				display: flex;
-				flex-wrap: wrap;
-			}
+      .product-details {
+        display: flex;
+        flex-direction: column;
+      }
 
-			.product-info span {
-				margin-right: 20px;
-				font-size: 14px;
-			}
+      .product-info {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 5px;
+      }
 
-			.product-description {
-				margin-top: 5px;
-				font-size: 14px;
-			}
-		</style>
+      .product-info span {
+        margin-right: 20px;
+        font-size: 14px;
+        color: #4a5568;
+      }
 
-		<title>Orte Company Case - Masum Gökyüz</title>
-	</head>
-	<body>
-		<button id="fetchProductsBtn">Fetch All Products</button>
-		<button id="filterX">Filter X</button>
-		<button id="filterM">Filter M</button>
-		<ul id="productList"></ul>
+      .product-description {
+        font-size: 14px;
+        color: #4a5568;
+      }
+    </style>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
-		<script src="script.js"></script>
-	</body>
+    <title>Orte Company Case - Masum Gökyüz</title>
+  </head>
+  <body>
+    <button id="fetchProductsBtn">Fetch All Products</button>
+    <button id="filterX">Filter X</button>
+    <button id="filterM">Filter M</button>
+    <ul id="productList"></ul>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>

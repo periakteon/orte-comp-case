@@ -54,14 +54,34 @@
         font-size: 14px;
         color: #4a5568;
       }
+
+      .custom-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #6e8295;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition:
+          background-color 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .custom-button:hover {
+        background-color: #2c5282;
+        transform: scale(1.02);
+      }
     </style>
 
     <title>Orte Company Case - Masum Gökyüz</title>
   </head>
   <body>
-    <button id="fetchProductsBtn">Fetch All Products</button>
-    <button id="filterX">Filter X</button>
-    <button id="filterM">Filter M</button>
+    <button id="fetchProductsBtn" class="custom-button">
+      Fetch All Products
+    </button>
+    <button id="filterX" class="custom-button">Filter X</button>
+    <button id="filterM" class="custom-button">Filter M</button>
     <ul id="productList"></ul>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>

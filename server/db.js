@@ -1,7 +1,8 @@
-const Sequelize = require("sequelize");
-const fs = require("fs/promises");
-const path = require("path");
-const mysql = require("mysql2/promise");
+import Sequelize from "sequelize";
+import fs from "fs/promises";
+import path from "path";
+import mysql from "mysql2/promise";
+import { fileURLToPath } from "url";
 
 (async () => {
 	try {
@@ -42,10 +43,10 @@ const mysql = require("mysql2/promise");
 			},
 		});
 
-		const jsonFile = await fs.readFile(
-			path.join(__dirname, "urunler.json"),
-			"utf8"
-		);
+		const __filename = fileURLToPath(import.meta.url);
+		const __dirname = path.dirname(__filename);
+		const filePath = path.join(__dirname, "urunler.json");
+		const jsonFile = await fs.readFile(filePath, "utf8");
 		const jsonData = JSON.parse(jsonFile);
 
 		await sequelize.sync({ force: true });

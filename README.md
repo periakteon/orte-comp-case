@@ -9,7 +9,7 @@
 
 ## Installation
 
-1. First you need to install MySQL locally via Docker (if you don't have Docker on your computer, you need to install Docker first).
+**1**. First you need to install MySQL locally via Docker (if you don't have Docker on your computer, you need to install Docker first).
 
 After installing Docker, run the following command from the terminal:
 
@@ -19,7 +19,7 @@ docker run -p 3306:3306 --name my_mysql_db -e MYSQL_ROOT_PASSWORD=admin -d mysql
 
 **Warning**: If you already have MySQL running on port 3306, this command will throw an error. If you get an error, try a different port.
 
-2. Navigate to the "server" directory and run the following command to install the required Node modules:
+**2**. Navigate to the "server" directory and run the following command to install the required Node modules:
 
 ```bash
 npm install
@@ -31,10 +31,10 @@ After the Node modules are installed, execute the following command in your term
 node db.js
 ```
 
-3. To start the server, run the following command:
+**3**. To start the server, run the following command:
 
 ```bash
 npm run dev
 ```
 
-4. Once the server is up and running, you can begin using the application by opening the `index.html` file.
+**4**. Once the server is up and running, you can begin using the application by opening the `index.html` file.

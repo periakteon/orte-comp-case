@@ -16,6 +16,8 @@ Artık `index.html` dosyası express uygulaması üzerinden static olarak serve 
 
 **UYARI: Eğer `.env` dosyasında farklı bir soket portu kullanacaksanız, `script.js` dosyasındaki port numarasını da elle düzeltmeniz gerekmektedir.**
 
+**Ek: `.env` dosyasının kesinlikle public bir şekilde paylaşılmaması gerektiğini biliyorum ve kendi projelerimde `.env` dosyasını repoya kesinlikle pushlamıyorum. Ancak bu case'de hem sizi uğraştırmamak için hem de hassas bilgilerin yer almaması sebebiyle `.env` dosyasını repoya pushlamamın bir sakıncası olmadığını düşündüm.**
+
 ## Video
 
 [![Watch the video](https://img.youtube.com/vi/bTOUj6ik61Q/hqdefault.jpg)](https://www.youtube.com/watch?v=bTOUj6ik61Q)
@@ -87,6 +89,8 @@ In the first version of the README, I asked for Docker and MySQL requirements an
 Now the `index.html` file is served as static via the express application. The `index.html` file depends on the `script.js` file to work properly. In the first line of the `script.js` file, the connection to the socket port is made. In the `.env` file the default socket port is `3001` and the HTTP port is `3000`. I also set the socket port in `script.js` to `3001`.
 
 **WARNING: If you are going to use a different socket port in the `.env` file, you need to manually correct the port number in the `script.js` file.**
+
+**Addendum: I know that the `.env` file should never be shared publicly and I never push the `.env` file to the repository in my own projects. However, in this case, I thought there was no harm in pushing the `.env` file to the repository, both to save you the hassle and because it does not contain sensitive information.**
 
 ## Before You Start:
 

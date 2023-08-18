@@ -1,3 +1,6 @@
+import env from "dotenv";
+env.config();
+
 import fs from "fs/promises";
 import path from "path";
 import mysql from "mysql2/promise";
@@ -7,12 +10,15 @@ import { Product, sequelize } from "./model/Product.js";
 (async () => {
   try {
     const connection = await mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "admin",
+      host: process.env.DB_HOST || "localhost",
+      user: process.env.DB_USER || "root",
+      password: process.env.DB_PASSWORD || "admin",
+      port: process.env.DB_PORT || 3306,
     });
 
-    await connection.query("CREATE DATABASE IF NOT EXISTS orte");
+    await connection.query(
+      `CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME};`,
+    );
     console.log("Veritabanı başarıyla oluşturuldu veya zaten mevcut.");
 
     const __filename = fileURLToPath(import.meta.url);
@@ -34,8 +40,8 @@ import { Product, sequelize } from "./model/Product.js";
             stock: productData.stock,
             img: productData.img,
             size: Array.isArray(productData.size)
-              ? productData.size.join(", ")
-              : productData.size,
+              ? `${productData.size.join(",")},`
+              : `${productData.size},`,
             description: productData.description,
           });
         } else {
